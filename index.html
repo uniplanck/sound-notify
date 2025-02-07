@@ -2,20 +2,22 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <script>
-        window.onload = function() {
-            if (confirm("このページは音を再生します。許可しますか？")) {
-                let audio = new Audio("https://uniplanck.github.io/sound-notify/sound.wav");
-                audio.volume = 1.0;
-                audio.play().catch(error => {
-                    console.log("音の再生に失敗:", error);
-                });
-            } else {
-                console.log("ユーザーが音の再生を拒否しました。");
-            }
-        };
-    </script>
+    <title>サウンド許可の確認</title>
 </head>
 <body>
+    <p>このページはサウンドを再生します。許可してください。</p>
+    <button id="playSound">サウンドを許可する</button>
+
+    <script>
+        document.getElementById("playSound").addEventListener("click", function() {
+            let audio = new Audio("https://uniplanck.github.io/sound-notify/sound.wav");
+            audio.volume = 1.0;
+            audio.play().then(() => {
+                console.log("音を再生しました");
+            }).catch(error => {
+                console.log("音の再生に失敗:", error);
+            });
+        });
+    </script>
 </body>
 </html>
