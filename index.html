@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <script>
         window.onload = function() {
-            let audio = new Audio("https://uniplanck.github.io/sound-notify/sound.wav");
-            audio.volume = 1.0;
-            audio.play().catch(error => {
-                console.log("音の再生に失敗:", error);
-            });
+            if (confirm("このページは音を再生します。許可しますか？")) {
+                let audio = new Audio("https://uniplanck.github.io/sound-notify/sound.wav");
+                audio.volume = 1.0;
+                audio.play().catch(error => {
+                    console.log("音の再生に失敗:", error);
+                });
+            } else {
+                console.log("ユーザーが音の再生を拒否しました。");
+            }
         };
     </script>
 </head>
