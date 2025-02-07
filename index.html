@@ -2,23 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>通知音</title>
     <script>
-        function playSound() {
+        window.onload = function() {
             let audio = new Audio("https://uniplanck.github.io/sound-notify/sound.wav");
             audio.volume = 1.0;
             audio.play().catch(error => {
                 console.log("音の再生に失敗:", error);
             });
-        }
-
-        document.addEventListener("visibilitychange", () => {
-            if (document.visibilityState === "visible") {
-                playSound(); // タブがアクティブになった瞬間に音を再生
-            }
-        });
-
-        window.onload = () => setTimeout(playSound, 500); // .5秒後に音を再生
+        };
     </script>
 </head>
 <body>
