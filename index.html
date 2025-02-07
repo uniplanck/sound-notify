@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <title>通知音</title>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let audio = document.getElementById("sound");
-            audio.play().catch(error => console.log("音の再生に失敗:", error));
-        });
+        window.onload = function() {
+            let audio = new Audio("sound.wav");
+            audio.play().then(() => {
+                console.log("音が再生されました！");
+            }).catch(error => {
+                console.log("音の再生に失敗:", error);
+            });
+        };
     </script>
 </head>
 <body>
     <h1>通知音ページ</h1>
-    <audio id="sound" autoplay>
-        <source src="sound.wav" type="audio/wav">
-        お使いのブラウザはオーディオタグをサポートしていません。
-    </audio>
 </body>
 </html>
