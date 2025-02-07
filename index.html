@@ -7,14 +7,10 @@
         function playSound() {
             let audio = new Audio("https://uniplanck.github.io/sound-notify/sound.wav");
             audio.volume = 1.0;
-            audio.play().then(() => {
-                console.log("音が再生されました！");
-            }).catch(error => {
+            audio.play().catch(error => {
                 console.log("音の再生に失敗:", error);
             });
         }
-
-        document.addEventListener("click", playSound); // クリックで音を鳴らす
 
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "visible") {
@@ -22,13 +18,9 @@
             }
         });
 
-        window.onload = function() {
-            setTimeout(playSound, 1000); // 1秒後に再生（失敗する可能性あり）
-        };
+        window.onload = () => setTimeout(playSound, 500); // .5秒後に音を再生
     </script>
 </head>
 <body>
-    <h1>通知音ページ</h1>
-    <button onclick="playSound()">音を鳴らす</button> <!-- 手動再生ボタン -->
 </body>
 </html>
